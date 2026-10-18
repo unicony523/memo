@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+
+<html lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>착! 포스트잇 투두리스트 (Neo-Brutalism Kitsch Pop)</title>
+<!-- Google Fonts: Gaegu, Jua & Fredoka / Montserrat for Neo-brutalism Pop feel -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700;800&amp;family=Gaegu:wght@400;700&amp;family=Jua&amp;family=Noto+Sans+KR:wght@500;700;900&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN with forms and container plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            hand: ['Gaegu', 'cursive', 'sans-serif'],
+            pop: ['Jua', 'sans-serif'],
+            display: ['Fredoka', 'Noto Sans KR', 'sans-serif'],
+            sans: ['Noto Sans KR', 'sans-serif'],
+          },
+          colors: {
+            neoYellow: '#FFE600',
+            neoPink: '#FF7AC6',
+            neoMint: '#5EEAD4',
+            neoBlue: '#67E8F9',
+            neoPurple: '#C084FC',
+            neoOrange: '#FB923C',
+            neoLime: '#A3E635',
+            neoBg: '#FFFDF0',
+          },
+          boxShadow: {
+            'brutal-sm': '2px 2px 0px #000000',
+            'brutal': '4px 4px 0px #000000',
+            'brutal-md': '6px 6px 0px #000000',
+            'brutal-lg': '8px 8px 0px #000000',
+            'brutal-hover': '2px 2px 0px #000000',
+            'tape': '2px 2px 0px rgba(0, 0, 0, 0.4)',
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="neo-kitsch-styles">
+    /* Neo-brutalism background dots */
+    .neo-dot-bg {
+      background-color: #FFFEEA;
+      background-image: radial-gradient(#000000 1.2px, transparent 1.2px);
+      background-size: 20px 20px;
+    }
+
+    /* Grid paper pattern with bold pop lines */
+    .pattern-grid-kitsch {
+      background-size: 16px 16px;
+      background-image: 
+        linear-gradient(to right, rgba(0, 0, 0, 0.08) 1.5px, transparent 1.5px),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.08) 1.5px, transparent 1.5px);
+    }
+
+    .pattern-lined-kitsch {
+      background-size: 100% 22px;
+      background-image: linear-gradient(to bottom, transparent 20px, rgba(0, 0, 0, 0.1) 22px);
+    }
+
+    /* Kitsch Fluorescent Washi Tapes with jagged borders */
+    .washi-tape-neon {
+      background: #FFE600;
+      border: 2px dashed #000;
+      box-shadow: 2px 2px 0px #000;
+    }
+    .washi-tape-pink {
+      background: #FF66C4;
+      border: 2px dashed #000;
+      box-shadow: 2px 2px 0px #000;
+    }
+    .washi-tape-lime {
+      background: #A3E635;
+      border: 2px dashed #000;
+      box-shadow: 2px 2px 0px #000;
+    }
+    .washi-tape-blue {
+      background: #38BDF8;
+      border: 2px dashed #000;
+      box-shadow: 2px 2px 0px #000;
+    }
+
+    /* Brutalist interactive button pressing animation */
+    .brutal-btn {
+      transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .brutal-btn:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0px #000000;
+    }
+    .brutal-btn:active {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0px #000000;
+    }
+
+    /* Marquee ribbon stripe */
+    .kitsch-stripes {
+      background: repeating-linear-gradient(
+        -45deg,
+        #FFE600,
+        #FFE600 12px,
+        #000000 12px,
+        #000000 24px
+      );
+    }
+  </style>
+</head>
+<body class="neo-dot-bg text-black min-h-screen flex flex-col font-sans selection:bg-neoPink selection:text-black">
+<!-- BEGIN: Neo-Brutalist Scallop / Marquee Top Banner -->
+<header class="w-full border-b-4 border-black bg-neoBlue shadow-brutal-md relative z-10" data-purpose="top-cute-banner">
+<!-- Caution Kitsch Top Strip -->
+<div class="h-3 w-full kitsch-stripes border-b-2 border-black"></div>
+<div class="max-w-6xl mx-auto px-4 py-4 md:py-5 flex flex-col md:flex-row items-center justify-between gap-3 text-center md:text-left">
+<div class="flex items-center gap-3">
+<!-- Spinning Kitsch Flower Badge -->
+<div class="w-12 h-12 bg-neoYellow border-3 border-black rounded-full flex items-center justify-center shadow-brutal-sm text-2xl font-black shrink-0 animate-[spin_10s_linear_infinite]">
+          🌸
+        </div>
+<div>
+<div class="inline-flex items-center gap-2 bg-black text-neoYellow px-2.5 py-0.5 rounded-md text-xs font-pop tracking-wider">
+<span>OFFICE &amp; KITSCH POP NOTES</span>
+<span class="text-white">★</span>
+<span class="text-neoMint">NEO-BRUTAL</span>
+</div>
+<h1 class="text-3xl md:text-4xl font-display font-extrabold text-black tracking-tight flex items-center gap-2 mt-0.5">
+<span>✏️</span> POST-IT TODO BOARD <span>📌</span>
+</h1>
+</div>
+</div>
+<div class="bg-white border-3 border-black px-4 py-1.5 rounded-xl shadow-brutal-sm rotate-1 hover:rotate-0 transition-transform">
+<p class="font-pop text-lg md:text-xl text-black flex items-center gap-2">
+<span class="animate-bounce">⚡</span> 오늘 할 일 사각사각 착! 붙이기!
+        </p>
+</div>
+</div>
+</header>
+<!-- END: Neo-Brutalist Banner -->
+<!-- BEGIN: Main App Container -->
+<main class="flex-1 max-w-6xl w-full mx-auto px-4 py-6 md:py-8 flex flex-col items-center">
+<!-- Top Badge Card: Wireframe "Post-it Todo List" Title Bar in Neo-Brutalism -->
+<div class="mb-6 inline-flex items-center gap-2 px-6 py-2.5 bg-neoPink border-3 border-black rounded-2xl shadow-brutal text-black font-pop text-xl md:text-2xl transform -rotate-1 hover:rotate-0 transition-transform">
+<span class="text-2xl">📋</span>
+<span class="tracking-wide">착! 키치 포스트잇 투두보드</span>
+<span class="text-xs font-display bg-black text-white px-2.5 py-1 rounded-lg font-black uppercase">V 2.0 POP</span>
+</div>
+<!-- BEGIN: Input Section (Neo-Brutalism 3D Card with Tape & Stickers) -->
+<section class="w-full max-w-3xl bg-white border-3 border-black rounded-3xl p-5 md:p-7 shadow-brutal-lg relative mb-8" data-purpose="todo-input-card">
+<!-- Washi Tape Effect at top -->
+<div class="absolute -top-4 left-1/2 transform -translate-x-1/2 w-36 h-7 washi-tape-neon rotate-2 flex items-center justify-center font-display font-black text-xs tracking-widest text-black z-20">
+        ★ MEMO PAD ★
+      </div>
+<!-- Kitsch Corner Pop Stickers -->
+<div class="absolute -top-3 -right-3 w-10 h-10 bg-neoMint border-2 border-black rounded-full flex items-center justify-center shadow-brutal-sm text-lg rotate-12 z-20" title="스마일!">
+        😋
+      </div>
+<div class="absolute -bottom-3 -left-3 w-9 h-9 bg-neoYellow border-2 border-black rounded-full flex items-center justify-center shadow-brutal-sm text-base -rotate-12 z-20" title="반짝이!">
+        ✨
+      </div>
+<div class="text-center mb-4 mt-1">
+<label class="inline-block text-xl md:text-2xl font-pop text-black tracking-wide" for="todoInput">
+          ✨ 오늘의 포스트는? (입력칸)
+        </label>
+<p class="text-xs md:text-sm text-stone-600 font-sans font-medium mt-0.5">
+          잊지 말아야 할 할 일, 따뜻한 메모, 혹은 목표를 힙하고 귀엽게 작성해보세요!
+        </p>
+</div>
+<!-- Main Textarea with Neo-Brutalism Outline -->
+<div class="relative">
+<textarea class="w-full border-3 border-black rounded-2xl p-4 text-base md:text-lg focus:outline-none focus:ring-4 focus:ring-neoYellow focus:border-black transition resize-none placeholder:text-stone-400 pattern-lined-kitsch leading-relaxed text-black font-hand text-xl bg-[#FFFEEF] shadow-brutal-sm" id="todoInput" placeholder="오늘 할 일이나 간직하고 싶은 메모를 입력해보세요... (예: 힙한 디자인 시스템 정리 &amp; 딸기 와플 먹기 🍓)" rows="3"></textarea>
+<span class="absolute bottom-3 right-4 text-xs font-display font-bold bg-white px-2 py-0.5 border-2 border-black rounded-md shadow-brutal-sm text-black" id="charCounter">
+          0 / 80자
+        </span>
+</div>
+<!-- Customization controls: Note Color, Pin Type, Paper Texture -->
+<div class="mt-5 flex flex-wrap items-center justify-between gap-4 pt-4 border-t-2 border-black border-dashed">
+<!-- Post-it Color Picker -->
+<div class="flex items-center gap-2" data-purpose="color-selector">
+<span class="text-xs font-pop font-bold text-black text-sm uppercase">컬러:</span>
+<div class="flex items-center gap-2" id="colorPickerGroup">
+<button class="w-8 h-8 rounded-xl bg-neoYellow border-3 border-black shadow-brutal-sm ring-2 ring-black ring-offset-2 focus:outline-none transition-transform hover:scale-110" data-color="yellow" title="네오 옐로우" type="button"></button>
+<button class="w-8 h-8 rounded-xl bg-neoPink border-3 border-black shadow-brutal-sm focus:outline-none transition-transform hover:scale-110" data-color="pink" title="네오 핑크" type="button"></button>
+<button class="w-8 h-8 rounded-xl bg-neoMint border-3 border-black shadow-brutal-sm focus:outline-none transition-transform hover:scale-110" data-color="green" title="네오 민트" type="button"></button>
+<button class="w-8 h-8 rounded-xl bg-neoBlue border-3 border-black shadow-brutal-sm focus:outline-none transition-transform hover:scale-110" data-color="blue" title="네오 스카이" type="button"></button>
+<button class="w-8 h-8 rounded-xl bg-neoPurple border-3 border-black shadow-brutal-sm focus:outline-none transition-transform hover:scale-110" data-color="purple" title="네오 퍼플" type="button"></button>
+</div>
+</div>
+<!-- Drawing Pin Selector (Bold Neo-Kitsch Vector Pins) -->
+<div class="flex items-center gap-2" data-purpose="pin-selector">
+<span class="text-xs font-pop font-bold text-black text-sm uppercase">핀 스타일:</span>
+<div class="flex items-center gap-1.5 bg-[#FFFDE0] p-1.5 rounded-xl border-2 border-black shadow-brutal-sm" id="pinPickerGroup">
+<!-- Flower Pin -->
+<button class="p-1.5 rounded-lg bg-white border-2 border-black shadow-brutal-sm text-xs flex items-center justify-center transition hover:bg-yellow-100" data-pin="flower" title="팝 플라워 핀" type="button">
+<svg class="w-5 h-5 drop-shadow-sm" fill="none" viewbox="0 0 32 32">
+<circle cx="16" cy="11" fill="#FF2E93" r="4.5" stroke="#000" stroke-width="1.8"></circle>
+<circle cx="21" cy="14" fill="#FF2E93" r="4.5" stroke="#000" stroke-width="1.8"></circle>
+<circle cx="20" cy="20" fill="#FF2E93" r="4.5" stroke="#000" stroke-width="1.8"></circle>
+<circle cx="12" cy="20" fill="#FF2E93" r="4.5" stroke="#000" stroke-width="1.8"></circle>
+<circle cx="11" cy="14" fill="#FF2E93" r="4.5" stroke="#000" stroke-width="1.8"></circle>
+<circle cx="16" cy="16" fill="#FFE600" r="3.5" stroke="#000" stroke-width="1.8"></circle>
+<circle cx="15.2" cy="14.8" fill="#FFF" r="1.2"></circle>
+</svg>
+</button>
+<!-- Star Pin -->
+<button class="p-1.5 rounded-lg hover:bg-yellow-100 text-xs flex items-center justify-center transition border-2 border-transparent" data-pin="star" title="팝 스타 핀" type="button">
+<svg class="w-5 h-5 drop-shadow-sm" fill="none" viewbox="0 0 32 32">
+<path d="M16 3L19.5 12H29L21.5 17.5L24.5 27L16 21.5L7.5 27L10.5 17.5L3 12H12.5L16 3Z" fill="#FFE600" stroke="#000" stroke-width="2"></path>
+<circle cx="14" cy="11" fill="#FFF" r="1.5"></circle>
+</svg>
+</button>
+<!-- Heart Pin -->
+<button class="p-1.5 rounded-lg hover:bg-pink-100 text-xs flex items-center justify-center transition border-2 border-transparent" data-pin="heart" title="팝 하트 핀" type="button">
+<svg class="w-5 h-5 drop-shadow-sm" fill="none" viewbox="0 0 32 32">
+<path d="M16 27C16 27 5 19.5 5 12.2C5 8.2 8.2 5 12.2 5C14.5 5 15.6 6.3 16 7.2C16.4 6.3 17.5 5 19.8 5C23.8 5 27 8.2 27 12.2C27 19.5 16 27 16 27Z" fill="#FF0055" stroke="#000" stroke-width="2"></path>
+<circle cx="12" cy="9.5" fill="#FFF" r="1.5"></circle>
+</svg>
+</button>
+<!-- Neon Pushpin -->
+<button class="p-1.5 rounded-lg hover:bg-blue-100 text-xs flex items-center justify-center transition border-2 border-transparent" data-pin="pushpin" title="볼드 푸시핀" type="button">
+<svg class="w-5 h-5 drop-shadow-sm" fill="none" viewbox="0 0 32 32">
+<path d="M12 6C12 4.5 13.5 4 16 4C18.5 4 20 4.5 20 6L18.5 12H23L19 18H17V27H15V18H13L9 12H13.5L12 6Z" fill="#00E5FF" stroke="#000" stroke-width="1.8"></path>
+<ellipse cx="16" cy="6" fill="#FFF" rx="3.5" ry="1.2"></ellipse>
+</svg>
+</button>
+<!-- Purple Skull/Smile Bead Pin -->
+<button class="p-1.5 rounded-lg hover:bg-purple-100 text-xs flex items-center justify-center transition border-2 border-transparent" data-pin="bead" title="팝 비드 핀" type="button">
+<svg class="w-5 h-5 drop-shadow-sm" fill="none" viewbox="0 0 32 32">
+<circle cx="16" cy="13" fill="#A855F7" r="7.5" stroke="#000" stroke-width="2"></circle>
+<circle cx="13" cy="10" fill="#FFF" r="2.2"></circle>
+<path d="M16 21V28" stroke="#000" stroke-linecap="round" stroke-width="2.5"></path>
+</svg>
+</button>
+</div>
+</div>
+<!-- Pattern / Tape Toggle -->
+<div class="flex items-center gap-2">
+<label class="inline-flex items-center gap-2 cursor-pointer text-sm font-pop text-black select-none">
+<input checked="" class="w-5 h-5 rounded-md border-2 border-black text-neoYellow focus:ring-0 checked:bg-black checked:text-neoYellow shadow-brutal-sm" id="washiToggle" type="checkbox"/>
+<span>형광 테이프 부착 ⚡</span>
+</label>
+</div>
+</div>
+<!-- Action Button (Neo-Brutalist 3D Chunky Pop Button) -->
+<div class="mt-6 text-center">
+<button class="brutal-btn w-full md:w-3/5 mx-auto py-3.5 px-6 bg-neoYellow border-3 border-black text-black font-pop text-2xl tracking-wide rounded-2xl shadow-brutal-md flex items-center justify-center gap-3 cursor-pointer" id="btnStickPostit" type="button">
+<span class="text-3xl animate-bounce">📌</span>
+<span>착! 포스트잇 붙이기!!</span>
+<span class="text-xs bg-black text-white px-2.5 py-1 rounded-md font-display font-black tracking-wider">ENTER ↵</span>
+</button>
+</div>
+</section>
+<!-- END: Input Section -->
+<!-- Status & Stats Bar -->
+<div class="w-full flex flex-wrap items-center justify-between mb-6 px-3 gap-2">
+<div class="flex items-center gap-2.5 font-pop text-xl">
+<span class="text-black flex items-center gap-1.5">
+<span class="text-neoPink text-2xl">📌</span> 포스트잇 보드판
+        </span>
+<span class="text-xs font-display font-black bg-neoYellow border-2 border-black text-black px-3 py-1 rounded-full shadow-brutal-sm uppercase" id="totalCountBadge">
+          총 4개의 포스트잇
+        </span>
+</div>
+<div class="flex items-center gap-3 font-pop text-base">
+<button class="bg-black text-white px-3 py-1 rounded-xl font-bold border-2 border-black shadow-brutal-sm hover:bg-neutral-800 transition" id="filterAll">
+          전체보기
+        </button>
+<span class="text-black font-bold">/</span>
+<button class="bg-neoPink text-black px-3 py-1 rounded-xl font-bold border-2 border-black shadow-brutal-sm hover:translate-x-0.5 hover:translate-y-0.5 transition" id="clearCompleted">
+          완료된 포스트 떼기 🗑️
+        </button>
+</div>
+</div>
+<!-- BEGIN: Post-it Grid (Neo-Brutalist 4-column layout with kitsch stickers & 3D borders) -->
+<div class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-7 items-start auto-rows-fr" data-purpose="postit-board-grid" id="postitContainer">
+<!-- Post-it 1: Yellow Note with Bold Flower Pin & Washi Tape -->
+<article class="postit-card group relative bg-neoYellow pattern-grid-kitsch rounded-2xl p-5 pt-8 border-3 border-black shadow-brutal-md hover:shadow-brutal-lg transition-all duration-150 transform -rotate-1 hover:rotate-0 hover:-translate-y-1 flex flex-col justify-between min-h-[270px]">
+<!-- Fluorescent Neon Washi Tape -->
+<div class="absolute -top-3.5 left-1/2 -translate-x-1/2 w-32 h-6 washi-tape-neon rotate-1 z-20 flex items-center justify-center font-display font-black text-[10px] text-black">
+          ★ POP CUTE NOTE ★
+        </div>
+<!-- Kitsch Pop Flower Pin (Bold 2px outline) -->
+<div class="absolute top-2 left-1/2 -translate-x-1/2 z-30" title="꽃 모양 고정핀">
+<svg class="w-8 h-8 drop-shadow-md" fill="none" viewbox="0 0 32 32">
+<circle cx="16" cy="10" fill="#FF2E93" r="4.5" stroke="#000" stroke-width="2"></circle>
+<circle cx="21" cy="13" fill="#FF2E93" r="4.5" stroke="#000" stroke-width="2"></circle>
+<circle cx="19.5" cy="19" fill="#FF2E93" r="4.5" stroke="#000" stroke-width="2"></circle>
+<circle cx="12.5" cy="19" fill="#FF2E93" r="4.5" stroke="#000" stroke-width="2"></circle>
+<circle cx="11" cy="13" fill="#FF2E93" r="4.5" stroke="#000" stroke-width="2"></circle>
+<circle cx="16" cy="15" fill="#FFE600" r="3.2" stroke="#000" stroke-width="2"></circle>
+<circle cx="15.2" cy="13.8" fill="#FFF" r="1.2"></circle>
+</svg>
+</div>
+<!-- Corner Kitsch Sparkle -->
+<div class="absolute top-3 right-3 text-sm select-none opacity-80 group-hover:scale-125 transition-transform">
+          ✨
+        </div>
+<!-- Content Area -->
+<div class="mt-4 flex-1">
+<p class="font-pop text-2xl text-black leading-snug break-words">
+            위에는 귀여운 테이프가 붙여진 상태로 포스트잇이 붙어짐.
+          </p>
+<p class="font-sans text-xs font-bold text-stone-700 mt-2 bg-white/70 p-1.5 rounded-lg border border-black inline-block">
+            ✏️ 와시 테이프와 레드 플라워 핀이 콕!
+          </p>
+</div>
+<!-- Card Footer -->
+<div class="mt-4 pt-3 border-t-2 border-black border-dashed flex items-center justify-between text-xs font-bold">
+<label class="inline-flex items-center gap-2 cursor-pointer font-pop text-sm select-none">
+<input class="todo-check rounded-md text-black focus:ring-0 w-4 h-4 border-2 border-black" type="checkbox"/>
+<span>완료 착!</span>
+</label>
+<span class="font-display font-black text-[11px] bg-white px-2 py-0.5 border border-black rounded shadow-brutal-sm">10:30 AM</span>
+<button class="delete-btn bg-white hover:bg-black hover:text-white border-2 border-black rounded-lg p-1 text-xs font-black shadow-brutal-sm transition" title="포스트잇 떼기">
+            ✕
+          </button>
+</div>
+</article>
+<!-- Post-it 2: Pink Heart Note with Star Pins -->
+<article class="postit-card group relative bg-neoPink pattern-lined-kitsch rounded-2xl p-5 pt-8 border-3 border-black shadow-brutal-md hover:shadow-brutal-lg transition-all duration-150 transform rotate-1 hover:rotate-0 hover:-translate-y-1 flex flex-col justify-between min-h-[270px]">
+<!-- Two Yellow Star Pins at top corners -->
+<div class="absolute top-1.5 left-3 z-30" title="스타 핀">
+<svg class="w-7 h-7 drop-shadow-md transform -rotate-12" fill="none" viewbox="0 0 32 32">
+<path d="M16 3L19.5 12H29L21.5 17.5L24.5 27L16 21.5L7.5 27L10.5 17.5L3 12H12.5L16 3Z" fill="#FFE600" stroke="#000" stroke-width="2"></path>
+<circle cx="14" cy="11" fill="#FFF" r="1.3"></circle>
+</svg>
+</div>
+<div class="absolute top-1.5 right-3 z-30" title="스타 핀">
+<svg class="w-7 h-7 drop-shadow-md transform rotate-12" fill="none" viewbox="0 0 32 32">
+<path d="M16 3L19.5 12H29L21.5 17.5L24.5 27L16 21.5L7.5 27L10.5 17.5L3 12H12.5L16 3Z" fill="#FFE600" stroke="#000" stroke-width="2"></path>
+<circle cx="14" cy="11" fill="#FFF" r="1.3"></circle>
+</svg>
+</div>
+<!-- Content Area -->
+<div class="mt-4 flex-1">
+<span class="inline-block px-2.5 py-0.5 bg-black text-white text-[10px] font-display font-black rounded-md mb-1.5 shadow-brutal-sm">
+            DESIGN WORK ⚡
+          </span>
+<p class="font-pop text-2xl text-black leading-snug">
+            디자인 시스템 정리하기 &amp; 주간 회의 준비 📑
+          </p>
+<ul class="font-hand font-bold text-lg text-black mt-2 space-y-1 bg-white/60 p-2 rounded-xl border border-black">
+<li>• 컴포넌트 폰트 사이즈 통일</li>
+<li>• 귀여운 핀 아이콘 에셋 내보내기</li>
+</ul>
+</div>
+<!-- Card Footer -->
+<div class="mt-4 pt-3 border-t-2 border-black border-dashed flex items-center justify-between text-xs font-bold">
+<label class="inline-flex items-center gap-2 cursor-pointer font-pop text-sm select-none">
+<input class="todo-check rounded-md text-black focus:ring-0 w-4 h-4 border-2 border-black" type="checkbox"/>
+<span>완료 착!</span>
+</label>
+<span class="font-display font-black text-[11px] bg-white px-2 py-0.5 border border-black rounded shadow-brutal-sm">11:15 AM</span>
+<button class="delete-btn bg-white hover:bg-black hover:text-white border-2 border-black rounded-lg p-1 text-xs font-black shadow-brutal-sm transition" title="포스트잇 떼기">
+            ✕
+          </button>
+</div>
+</article>
+<!-- Post-it 3: Mint Green Note with Purple Bead Pin -->
+<article class="postit-card group relative bg-neoMint pattern-grid-kitsch rounded-2xl p-5 pt-8 border-3 border-black shadow-brutal-md hover:shadow-brutal-lg transition-all duration-150 transform -rotate-2 hover:rotate-0 hover:-translate-y-1 flex flex-col justify-between min-h-[270px]">
+<!-- Purple Bead Pin -->
+<div class="absolute top-1 left-1/2 -translate-x-1/2 z-30" title="보라 구슬 핀">
+<svg class="w-8 h-8 drop-shadow-md" fill="none" viewbox="0 0 32 32">
+<circle cx="16" cy="13" fill="#A855F7" r="7.5" stroke="#000" stroke-width="2"></circle>
+<circle cx="13.5" cy="10.5" fill="#FFF" r="2.2"></circle>
+<path d="M16 21V28" stroke="#000" stroke-linecap="round" stroke-width="2.5"></path>
+</svg>
+</div>
+<!-- Strawberry Pop Sticker -->
+<div class="absolute top-2 right-2 text-2xl select-none group-hover:scale-125 transition-transform" title="딸기 스티커">
+          🍓
+        </div>
+<!-- Content Area -->
+<div class="mt-4 flex-1">
+<span class="inline-block px-2.5 py-0.5 bg-black text-neoLime text-[10px] font-display font-black rounded-md mb-1.5 shadow-brutal-sm">
+            SHOPPING LIST 🛒
+          </span>
+<p class="font-pop text-2xl text-black leading-snug">
+            퇴근길 장보기 목록 🍓
+          </p>
+<p class="font-hand font-bold text-xl text-black mt-2 leading-relaxed bg-white/60 p-2 rounded-xl border border-black">
+            - 서울우유 1팩 🥛<br/>
+            - 생딸기 한 상자<br/>
+            - 귀여운 문구점 들르기!
+          </p>
+</div>
+<!-- Card Footer -->
+<div class="mt-4 pt-3 border-t-2 border-black border-dashed flex items-center justify-between text-xs font-bold">
+<label class="inline-flex items-center gap-2 cursor-pointer font-pop text-sm select-none">
+<input checked="" class="todo-check rounded-md text-black focus:ring-0 w-4 h-4 border-2 border-black" type="checkbox"/>
+<span class="line-through text-stone-600">완료 착!</span>
+</label>
+<span class="font-display font-black text-[11px] bg-white px-2 py-0.5 border border-black rounded shadow-brutal-sm">01:45 PM</span>
+<button class="delete-btn bg-white hover:bg-black hover:text-white border-2 border-black rounded-lg p-1 text-xs font-black shadow-brutal-sm transition" title="포스트잇 떼기">
+            ✕
+          </button>
+</div>
+</article>
+<!-- Post-it 4: Soft Sky Blue Note with Pink Washi Tape & Navy Pushpin -->
+<article class="postit-card group relative bg-neoBlue pattern-lined-kitsch rounded-2xl p-5 pt-8 border-3 border-black shadow-brutal-md hover:shadow-brutal-lg transition-all duration-150 transform rotate-2 hover:rotate-0 hover:-translate-y-1 flex flex-col justify-between min-h-[270px]">
+<!-- Pink Washi Tape Strip -->
+<div class="absolute -top-3.5 left-1/2 -translate-x-1/2 w-28 h-6 washi-tape-pink shadow-tape z-20 flex items-center justify-center font-display font-black text-[9px] text-white">
+          ♥ LOVE TODAY ♥
+        </div>
+<!-- Bold Navy Vector Pushpin -->
+<div class="absolute top-2 right-4 z-30" title="네이비 푸시핀">
+<svg class="w-7 h-7 drop-shadow-md" fill="none" viewbox="0 0 32 32">
+<path d="M12 6C12 4.5 13.5 4 16 4C18.5 4 20 4.5 20 6L18.5 12H23L19 18H17V27H15V18H13L9 12H13.5L12 6Z" fill="#1E40AF" stroke="#000" stroke-width="2"></path>
+<ellipse cx="16" cy="6" fill="#93C5FD" rx="3.5" ry="1.2"></ellipse>
+</svg>
+</div>
+<!-- Content Area -->
+<div class="mt-4 flex-1">
+<span class="inline-block px-2.5 py-0.5 bg-black text-neoYellow text-[10px] font-display font-black rounded-md mb-1.5 shadow-brutal-sm">
+            CHEER UP ✨
+          </span>
+<p class="font-pop text-2xl text-black leading-snug">
+            오늘 할 일 완료! 나를 위한 칭찬 한마디 ✨
+          </p>
+<p class="font-hand font-bold text-xl text-black mt-2 bg-white/70 p-2.5 rounded-xl border border-black leading-relaxed">
+            "포기하지 않고 끝까지 해낸 내가 제일 멋지다! 저녁엔 맛있는 디저트 먹기."
+          </p>
+</div>
+<!-- Card Footer -->
+<div class="mt-4 pt-3 border-t-2 border-black border-dashed flex items-center justify-between text-xs font-bold">
+<label class="inline-flex items-center gap-2 cursor-pointer font-pop text-sm select-none">
+<input class="todo-check rounded-md text-black focus:ring-0 w-4 h-4 border-2 border-black" type="checkbox"/>
+<span>완료 착!</span>
+</label>
+<span class="font-display font-black text-[11px] bg-white px-2 py-0.5 border border-black rounded shadow-brutal-sm">03:20 PM</span>
+<button class="delete-btn bg-white hover:bg-black hover:text-white border-2 border-black rounded-lg p-1 text-xs font-black shadow-brutal-sm transition" title="포스트잇 떼기">
+            ✕
+          </button>
+</div>
+</article>
+</div>
+<!-- END: Post-it Grid -->
+<!-- BEGIN: Neo-Brutalist Kitsch Sticker Bar -->
+<div class="w-full mt-12 pt-6 border-t-3 border-black border-dashed flex flex-wrap items-center justify-center gap-4 text-black font-pop text-base select-none" data-purpose="stationery-stickers">
+<div class="bg-neoYellow border-2 border-black px-4 py-1.5 rounded-xl shadow-brutal-sm flex items-center gap-2 hover:-translate-y-1 transition-transform cursor-pointer">
+<span>🌸</span> <span>꽃 모양 팝 핀</span>
+</div>
+<div class="bg-neoPink border-2 border-black px-4 py-1.5 rounded-xl shadow-brutal-sm flex items-center gap-2 hover:-translate-y-1 transition-transform cursor-pointer">
+<span>⭐</span> <span>별모양 볼드 핀</span>
+</div>
+<div class="bg-neoMint border-2 border-black px-4 py-1.5 rounded-xl shadow-brutal-sm flex items-center gap-2 hover:-translate-y-1 transition-transform cursor-pointer">
+<span>💖</span> <span>네오 하트 스티커</span>
+</div>
+<div class="bg-neoBlue border-2 border-black px-4 py-1.5 rounded-xl shadow-brutal-sm flex items-center gap-2 hover:-translate-y-1 transition-transform cursor-pointer">
+<span>📎</span> <span>형광 마스킹 테이프</span>
+</div>
+<div class="bg-neoPurple border-2 border-black px-4 py-1.5 rounded-xl shadow-brutal-sm flex items-center gap-2 hover:-translate-y-1 transition-transform cursor-pointer">
+<span>⚡</span> <span>키치 팝 아이콘</span>
+</div>
+</div>
+<!-- END: Neo-Brutalist Sticker Bar -->
+</main>
+<!-- END: Main App Container -->
+<!-- BEGIN: Interactive Logic Scripts -->
+<script data-purpose="postit-application-logic">
+    document.addEventListener('DOMContentLoaded', () => {
+      const todoInput = document.getElementById('todoInput');
+      const charCounter = document.getElementById('charCounter');
+      const btnStickPostit = document.getElementById('btnStickPostit');
+      const postitContainer = document.getElementById('postitContainer');
+      const colorPickerGroup = document.getElementById('colorPickerGroup');
+      const pinPickerGroup = document.getElementById('pinPickerGroup');
+      const washiToggle = document.getElementById('washiToggle');
+      const totalCountBadge = document.getElementById('totalCountBadge');
+      const clearCompleted = document.getElementById('clearCompleted');
+
+      // State for creating new notes
+      let selectedColor = 'yellow';
+      let selectedPin = 'flower';
+
+      // Pin SVGs dictionary with bold neo-brutalist strokes
+      const pinSVGs = {
+        flower: `
+          <div class="absolute top-2 left-1/2 -translate-x-1/2 z-30" title="꽃 모양 고정핀">
+            <svg class="w-8 h-8 drop-shadow-md" viewBox="0 0 32 32" fill="none">
+              <circle cx="16" cy="10" r="4.5" fill="#FF2E93" stroke="#000" stroke-width="2" />
+              <circle cx="21" cy="13" r="4.5" fill="#FF2E93" stroke="#000" stroke-width="2" />
+              <circle cx="19.5" cy="19" r="4.5" fill="#FF2E93" stroke="#000" stroke-width="2" />
+              <circle cx="12.5" cy="19" r="4.5" fill="#FF2E93" stroke="#000" stroke-width="2" />
+              <circle cx="11" cy="13" r="4.5" fill="#FF2E93" stroke="#000" stroke-width="2" />
+              <circle cx="16" cy="15" r="3.2" fill="#FFE600" stroke="#000" stroke-width="2" />
+              <circle cx="15.2" cy="13.8" r="1.2" fill="#FFF" />
+            </svg>
+          </div>
+        `,
+        star: `
+          <div class="absolute top-1.5 left-1/2 -translate-x-1/2 z-30" title="별 핀">
+            <svg class="w-7 h-7 drop-shadow-md" viewBox="0 0 32 32" fill="none">
+              <path d="M16 3L19.5 12H29L21.5 17.5L24.5 27L16 21.5L7.5 27L10.5 17.5L3 12H12.5L16 3Z" fill="#FFE600" stroke="#000" stroke-width="2"/>
+              <circle cx="14" cy="11" r="1.3" fill="#FFF" />
+            </svg>
+          </div>
+        `,
+        heart: `
+          <div class="absolute top-1.5 left-1/2 -translate-x-1/2 z-30" title="하트 핀">
+            <svg class="w-7 h-7 drop-shadow-md" viewBox="0 0 32 32" fill="none">
+              <path d="M16 27C16 27 5 19.5 5 12.2C5 8.2 8.2 5 12.2 5C14.5 5 15.6 6.3 16 7.2C16.4 6.3 17.5 5 19.8 5C23.8 5 27 8.2 27 12.2C27 19.5 16 27 16 27Z" fill="#FF0055" stroke="#000" stroke-width="2"/>
+              <circle cx="12" cy="9.5" r="1.5" fill="#FFF" />
+            </svg>
+          </div>
+        `,
+        pushpin: `
+          <div class="absolute top-2 right-4 z-30" title="볼드 푸시핀">
+            <svg class="w-7 h-7 drop-shadow-md" viewBox="0 0 32 32" fill="none">
+              <path d="M12 6C12 4.5 13.5 4 16 4C18.5 4 20 4.5 20 6L18.5 12H23L19 18H17V27H15V18H13L9 12H13.5L12 6Z" fill="#00E5FF" stroke="#000" stroke-width="1.8"/>
+              <ellipse cx="16" cy="6" rx="3.5" ry="1.2" fill="#FFF" />
+            </svg>
+          </div>
+        `,
+        bead: `
+          <div class="absolute top-1 left-1/2 -translate-x-1/2 z-30" title="보라 구슬 핀">
+            <svg class="w-8 h-8 drop-shadow-md" viewBox="0 0 32 32" fill="none">
+              <circle cx="16" cy="13" r="7.5" fill="#A855F7" stroke="#000" stroke-width="2" />
+              <circle cx="13.5" cy="10.5" r="2.2" fill="#FFF" />
+              <path d="M16 21V28" stroke="#000" stroke-width="2.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+        `
+      };
+
+      // Neo-brutalist Vivid Pastel Color Schemes
+      const colorStyles = {
+        yellow: {
+          bg: 'bg-neoYellow',
+          pattern: 'pattern-grid-kitsch',
+          tapeClass: 'washi-tape-neon',
+          tapeText: '★ STICKY POP ★',
+          badgeText: 'TODAY POP'
+        },
+        pink: {
+          bg: 'bg-neoPink',
+          pattern: 'pattern-lined-kitsch',
+          tapeClass: 'washi-tape-pink text-white',
+          tapeText: '♥ KITSCH NOTE ♥',
+          badgeText: 'HOT MEMO'
+        },
+        green: {
+          bg: 'bg-neoMint',
+          pattern: 'pattern-grid-kitsch',
+          tapeClass: 'washi-tape-lime',
+          tapeText: '★ FRESH GOAL ★',
+          badgeText: 'MINT TODO'
+        },
+        blue: {
+          bg: 'bg-neoBlue',
+          pattern: 'pattern-lined-kitsch',
+          tapeClass: 'washi-tape-blue text-white',
+          tapeText: '⚡ POP VIBE ⚡',
+          badgeText: 'COOL TASK'
+        },
+        purple: {
+          bg: 'bg-neoPurple',
+          pattern: 'pattern-grid-kitsch',
+          tapeClass: 'washi-tape-pink text-white',
+          tapeText: '★ MAGIC DAY ★',
+          badgeText: 'SPECIAL'
+        }
+      };
+
+      const rotations = ['rotate-1', '-rotate-1', 'rotate-2', '-rotate-2'];
+
+      // Character count listener
+      todoInput.addEventListener('input', () => {
+        const len = todoInput.value.length;
+        charCounter.textContent = `${len} / 80자`;
+        if (len > 80) {
+          charCounter.classList.add('bg-red-500', 'text-white');
+        } else {
+          charCounter.classList.remove('bg-red-500', 'text-white');
+        }
+      });
+
+      // Color Picker Selection
+      colorPickerGroup.querySelectorAll('button').forEach(btn => {
+        btn.addEventListener('click', () => {
+          colorPickerGroup.querySelectorAll('button').forEach(b => {
+            b.classList.remove('ring-2', 'ring-black', 'ring-offset-2');
+          });
+          btn.classList.add('ring-2', 'ring-black', 'ring-offset-2');
+          selectedColor = btn.getAttribute('data-color');
+        });
+      });
+
+      // Pin Picker Selection
+      pinPickerGroup.querySelectorAll('button').forEach(btn => {
+        btn.addEventListener('click', () => {
+          pinPickerGroup.querySelectorAll('button').forEach(b => {
+            b.classList.remove('bg-white', 'border-black', 'shadow-brutal-sm');
+            b.classList.add('border-transparent');
+          });
+          btn.classList.add('bg-white', 'border-black', 'shadow-brutal-sm');
+          btn.classList.remove('border-transparent');
+          selectedPin = btn.getAttribute('data-pin');
+        });
+      });
+
+      // Update Card Count
+      function updateCardCount() {
+        const count = postitContainer.querySelectorAll('.postit-card').length;
+        totalCountBadge.textContent = `총 ${count}개의 포스트잇`;
+      }
+
+      // Add New Post-it
+      function addPostit() {
+        const text = todoInput.value.trim();
+        if (!text) {
+          todoInput.focus();
+          return;
+        }
+
+        const colorCfg = colorStyles[selectedColor] || colorStyles.yellow;
+        const randomRotation = rotations[Math.floor(Math.random() * rotations.length)];
+        const hasTape = washiToggle.checked;
+        const pinMarkup = pinSVGs[selectedPin] || pinSVGs.flower;
+
+        const timeString = new Date().toLocaleTimeString('en-US', {
+          hour: '2-digit',
+          minute: '2-digit'
+        });
+
+        // Washi tape element markup
+        const tapeMarkup = hasTape ? `
+          <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 w-32 h-6 ${colorCfg.tapeClass} rotate-1 z-20 flex items-center justify-center font-display font-black text-[10px]">
+            ${colorCfg.tapeText}
+          </div>
+        ` : '';
+
+        // Card Article
+        const card = document.createElement('article');
+        card.className = `postit-card group relative ${colorCfg.bg} ${colorCfg.pattern} rounded-2xl p-5 pt-8 border-3 border-black shadow-brutal-md hover:shadow-brutal-lg transition-all duration-150 transform ${randomRotation} hover:rotate-0 hover:-translate-y-1 flex flex-col justify-between min-h-[270px] opacity-0 translate-y-3`;
+        
+        card.innerHTML = `
+          ${tapeMarkup}
+          ${pinMarkup}
+          <div class="absolute top-3 right-3 text-sm select-none opacity-80 group-hover:scale-125 transition-transform">
+            ⚡
+          </div>
+          <div class="mt-4 flex-1">
+            <span class="inline-block px-2.5 py-0.5 bg-black text-white text-[10px] font-display font-black rounded-md mb-1.5 shadow-brutal-sm">
+              ${colorCfg.badgeText}
+            </span>
+            <p class="font-pop text-2xl text-black leading-snug break-words">
+              ${escapeHtml(text)}
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t-2 border-black border-dashed flex items-center justify-between text-xs font-bold">
+            <label class="inline-flex items-center gap-2 cursor-pointer font-pop text-sm select-none">
+              <input type="checkbox" class="todo-check rounded-md text-black focus:ring-0 w-4 h-4 border-2 border-black">
+              <span>완료 착!</span>
+            </label>
+            <span class="font-display font-black text-[11px] bg-white px-2 py-0.5 border border-black rounded shadow-brutal-sm">${timeString}</span>
+            <button class="delete-btn bg-white hover:bg-black hover:text-white border-2 border-black rounded-lg p-1 text-xs font-black shadow-brutal-sm transition" title="포스트잇 떼기">
+              ✕
+            </button>
+          </div>
+        `;
+
+        // Prepend to board
+        postitContainer.prepend(card);
+
+        // Animate
+        requestAnimationFrame(() => {
+          card.classList.remove('opacity-0', 'translate-y-3');
+          card.classList.add('opacity-100', 'translate-y-0');
+        });
+
+        // Reset
+        todoInput.value = '';
+        charCounter.textContent = '0 / 80자';
+        updateCardCount();
+      }
+
+      function escapeHtml(str) {
+        return str.replace(/[&<>'"]/g, 
+          tag => ({
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            "'": '&#39;',
+            '"': '&quot;'
+          }[tag] || tag)
+        );
+      }
+
+      btnStickPostit.addEventListener('click', addPostit);
+      todoInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' && !e.shiftKey) {
+          e.preventDefault();
+          addPostit();
+        }
+      });
+
+      // Card event delegation
+      postitContainer.addEventListener('click', (e) => {
+        if (e.target.closest('.delete-btn')) {
+          const card = e.target.closest('.postit-card');
+          if (card) {
+            card.classList.add('scale-75', 'opacity-0');
+            setTimeout(() => {
+              card.remove();
+              updateCardCount();
+            }, 180);
+          }
+        }
+      });
+
+      postitContainer.addEventListener('change', (e) => {
+        if (e.target.classList.contains('todo-check')) {
+          const card = e.target.closest('.postit-card');
+          const textEl = card.querySelector('.font-pop.text-2xl');
+          const labelSpan = e.target.nextElementSibling;
+          
+          if (e.target.checked) {
+            textEl.classList.add('line-through', 'opacity-50');
+            labelSpan.classList.add('line-through', 'text-stone-600');
+          } else {
+            textEl.classList.remove('line-through', 'opacity-50');
+            labelSpan.classList.remove('line-through', 'text-stone-600');
+          }
+        }
+      });
+
+      // Clear completed
+      clearCompleted.addEventListener('click', () => {
+        const completedChecks = postitContainer.querySelectorAll('.todo-check:checked');
+        completedChecks.forEach(chk => {
+          const card = chk.closest('.postit-card');
+          if (card) {
+            card.classList.add('scale-75', 'opacity-0');
+            setTimeout(() => {
+              card.remove();
+              updateCardCount();
+            }, 180);
+          }
+        });
+      });
+
+      updateCardCount();
+    });
+  </script>
+<!-- END: Interactive Logic Scripts -->
+</body></html>

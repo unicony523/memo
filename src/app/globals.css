@@ -1,26 +1,200 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700;800&family=Gaegu:wght@400;700&family=Jua&family=Noto+Sans+KR:wght@500;700;900&display=swap');
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --font-hand: 'Gaegu', cursive, sans-serif;
+  --font-pop: 'Jua', sans-serif;
+  --font-display: 'Fredoka', 'Noto Sans KR', sans-serif;
+  --font-sans: 'Noto Sans KR', sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.font-hand {
+  font-family: var(--font-hand);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+.font-pop {
+  font-family: var(--font-pop);
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+/* Neo-brutalism background dots */
+.neo-dot-bg {
+  background-color: #FFFEEA;
+  background-image: radial-gradient(#000000 1.2px, transparent 1.2px);
+  background-size: 20px 20px;
+}
+
+.dark .neo-dot-bg {
+  background-color: #121214;
+  background-image: radial-gradient(#52525b 1.2px, transparent 1.2px);
+  background-size: 20px 20px;
+}
+
+/* Grid paper pattern */
+.pattern-grid-kitsch {
+  background-size: 16px 16px;
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.08) 1.5px, transparent 1.5px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.08) 1.5px, transparent 1.5px);
+}
+
+.dark .pattern-grid-kitsch {
+  background-size: 16px 16px;
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.18) 1.5px, transparent 1.5px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.18) 1.5px, transparent 1.5px);
+}
+
+.pattern-lined-kitsch {
+  background-size: 100% 22px;
+  background-image: linear-gradient(to bottom, transparent 20px, rgba(0, 0, 0, 0.1) 22px);
+}
+
+/* Washi Tapes */
+.washi-tape-yellow {
+  background: #FFE600;
+  border: 2px dashed #000;
+  box-shadow: 2px 2px 0px #000;
+}
+.washi-tape-pink {
+  background: #FF66C4;
+  border: 2px dashed #000;
+  box-shadow: 2px 2px 0px #000;
+}
+.washi-tape-green {
+  background: #A3E635;
+  border: 2px dashed #000;
+  box-shadow: 2px 2px 0px #000;
+}
+.washi-tape-blue {
+  background: #38BDF8;
+  border: 2px dashed #000;
+  box-shadow: 2px 2px 0px #000;
+}
+
+/* Brutal shadows */
+.shadow-brutal-sm {
+  box-shadow: 2px 2px 0px #000000;
+}
+.shadow-brutal {
+  box-shadow: 4px 4px 0px #000000;
+}
+.shadow-brutal-md {
+  box-shadow: 6px 6px 0px #000000;
+}
+.shadow-brutal-lg {
+  box-shadow: 8px 8px 0px #000000;
+}
+
+/* Brutalist Button */
+.brutal-btn {
+  transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.brutal-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #000000;
+}
+.brutal-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px #000000;
+}
+
+/* Marquee ribbon stripe */
+.kitsch-stripes {
+  background: repeating-linear-gradient(
+    -45deg,
+    #FFE600,
+    #FFE600 12px,
+    #000000 12px,
+    #000000 24px
+  );
+}
+
+/* 착! 붙는 메모 애니메이션 */
+@keyframes slapStick {
+  0% {
+    opacity: 0;
+    transform: scale(1.3) translateY(-28px) rotate(6deg);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(0.95) translateY(4px) rotate(-3deg);
+  }
+  80% {
+    transform: scale(1.02) translateY(-2px) rotate(1deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0) rotate(var(--rot, 0deg));
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.animate-slap-stick {
+  animation: slapStick 0.42s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
+
+/* 핀이 딱! 꽂히는 애니메이션 */
+@keyframes pinStab {
+  0% {
+    opacity: 0;
+    transform: translateY(-24px) scale(1.6) rotate(-20deg);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(3px) scale(0.9) rotate(5deg);
+  }
+  75% {
+    transform: translateY(-2px) scale(1.05) rotate(-2deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotate(0deg);
+  }
+}
+
+.animate-pin-stab {
+  animation: pinStab 0.48s cubic-bezier(0.34, 1.56, 0.64, 1) 0.12s both;
+}
+
+/* 드래그 상태 */
+.dragging-card {
+  opacity: 0.4;
+  transform: scale(0.95) rotate(3deg);
+  border-style: dashed !important;
+}
+
+.drag-over-card {
+  outline: 4px dashed #000;
+  outline-offset: 4px;
+}
+
+/* 형광 테이프 적용 시 은은하게 빛나는 글로우 효과 */
+.neon-glow-yellow {
+  box-shadow: 4px 4px 0px #000000, 0 0 16px rgba(255, 230, 0, 0.45);
+}
+.neon-glow-pink {
+  box-shadow: 4px 4px 0px #000000, 0 0 16px rgba(255, 122, 198, 0.45);
+}
+.neon-glow-green {
+  box-shadow: 4px 4px 0px #000000, 0 0 16px rgba(163, 230, 53, 0.45);
+}
+.neon-glow-blue {
+  box-shadow: 4px 4px 0px #000000, 0 0 16px rgba(56, 189, 248, 0.45);
+}
+
+.dark .neon-glow-yellow {
+  box-shadow: 4px 4px 0px #000000, 0 0 22px rgba(255, 230, 0, 0.7);
+}
+.dark .neon-glow-pink {
+  box-shadow: 4px 4px 0px #000000, 0 0 22px rgba(255, 122, 198, 0.7);
+}
+.dark .neon-glow-green {
+  box-shadow: 4px 4px 0px #000000, 0 0 22px rgba(163, 230, 53, 0.7);
+}
+.dark .neon-glow-blue {
+  box-shadow: 4px 4px 0px #000000, 0 0 22px rgba(56, 189, 248, 0.7);
+}
+
